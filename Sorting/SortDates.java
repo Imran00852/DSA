@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class SortDates {
     public static void sortDates(String arr[]){
         countingSort2(arr,1000000,100,32); //day
-        countingSort2(arr,10000,100,13);
-        countingSort2(arr,1,10000,2501);
+        countingSort2(arr,10000,100,13); //month
+        countingSort2(arr,1,10000,2501); //year
     }
 
     public static void countingSort2(String arr[],int div,int mod,int range){
