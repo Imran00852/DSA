@@ -2,18 +2,18 @@ package Sorting;
 
 public class RadixSort {
 
-    public static void radixSort(int arr[]){
-        int max=Integer.MIN_VALUE;
-        for(int val:arr){
-            if(val>max){
-                max=val;
+    public static void radixSort(int arr[]) {
+        int max = Integer.MIN_VALUE;
+        for (int val : arr) {
+            if (val > max) {
+                max = val;
             }
         }
 
-        int exp=1;
-        while(exp<=max){
-            countingSort(arr,exp);
-            exp=exp*10;
+        int exp = 1;
+        while (exp <= max) {
+            countingSort(arr, exp);
+            exp = exp * 10;
         }
     }
 
@@ -23,7 +23,7 @@ public class RadixSort {
         int farr[] = new int[10];
 
         for (int i = 0; i < arr.length; i++) {
-            int idx = arr[i]/exp%10;
+            int idx = arr[i] / exp % 10;
             farr[idx]++;
         }
 
@@ -42,12 +42,13 @@ public class RadixSort {
         }
 
         //copy ans in our original array arr
-        for(int i=0;i<arr.length;i++){
-            arr[i]=ans[i];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = ans[i];
         }
     }
+
     public static void main(String[] args) {
-        int arr[]={213,69,712,64,94,84};
+        int arr[] = {213, 69, 712, 64, 94, 84};
 
         radixSort(arr);
 
