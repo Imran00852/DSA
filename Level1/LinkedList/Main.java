@@ -204,15 +204,83 @@ public class Main {
             head=tail;
             tail=temp;
         }
+
+        //kth Element from the end
+        public int kthElementFromEnd(int k){
+            Node s=head;
+            Node f=head;
+
+            for(int i=0;i<k;i++){
+                f=f.next;
+            }
+
+            while(f!=tail){
+                s=s.next;
+                f=f.next;
+            }
+
+            return s.data;
+        }
+
+        //middle of linked list
+        public int getMiddleElement(){
+            Node s=head;
+            Node f=head;
+
+            while(f!=tail && f.next.next!=null){
+                f=f.next.next;
+                s=s.next;
+            }
+
+            return s.data;
+        }
+
+        //merge two sorted lists
+        public LinkedList mergeSortedLists(LinkedList l1, LinkedList l2){
+            LinkedList res=new LinkedList();
+            Node one=l1.head;
+            Node two=l2.head;
+
+            while(one!=null && two!=null){
+                if(one.data<two.data){
+                    res.addLast(one.data);
+                    one=one.next;
+                }else {
+                    res.addLast(two.data);
+                    two=two.next;
+                }
+            }
+
+            while(one!=null){
+                    res.addLast(one.data);
+                    one=one.next;
+            }
+
+            while(two!=null){
+                    res.addLast(two.data);
+                    two=two.next;
+            }
+
+            return res;
+        }
     }
 
     public static void main(String[] args) {
-        LinkedList ll = new LinkedList();
-        ll.addFirst(5);
-        ll.addFirst(4);
-        ll.addFirst(3);
-        ll.addFirst(10);
-        ll.addFirst(20);
+        LinkedList ll1 = new LinkedList();
+        LinkedList ll2=new LinkedList();
+
+        ll1.addFirst(100);
+        ll1.addFirst(90);
+        ll1.addFirst(80);
+        ll1.addFirst(70);
+        ll1.addFirst(60);
+
+        ll2.addFirst(50);
+        ll2.addFirst(40);
+        ll2.addFirst(30);
+        ll2.addFirst(20);
+        ll2.addFirst(10);
+
 
 //        System.out.println("size of linked list"+":"+ " " +ll.size());
 //        ll.removeFirst();
@@ -221,8 +289,17 @@ public class Main {
 //        ll.removeLast();
 //        ll.reverseDI();
 //        ll.removeAtIdx(2);
-        ll.reversePI();
-        ll.display();
+//        ll.reversePI();
+        //System.out.println(ll.kthElementFromEnd(1));
+//        System.out.println(ll1.getMiddleElement());
+//
 
+        LinkedList res=ll1.mergeSortedLists(ll1,ll2);
+
+        Node temp=res.head;
+        while(temp!=null){
+            System.out.print(temp.data + " ");
+            temp=temp.next;
+        }
     }
 }
