@@ -263,23 +263,56 @@ public class Main {
 
             return res;
         }
+
+        //get midddle node
+        public Node getMiddleNode(Node head, Node tail){
+            Node s=head;
+            Node f=head;
+
+            while(f!=tail && f.next!=tail){
+                f=f.next.next;
+                s=s.next;
+            }
+
+            return s;
+        }
+        //merge sort a linked list
+        public LinkedList mergeSortLL(Node head, Node tail){
+            if(head==tail){
+                LinkedList base=new LinkedList();
+                base.addLast(head.data);
+                return base;
+            }
+            Node mid=getMiddleNode(head,tail);
+            LinkedList fsh=mergeSortLL(head,mid);
+            LinkedList ssh=mergeSortLL(mid.next,tail);
+            LinkedList fsl=mergeSortedLists(fsh,ssh);
+            return fsl;
+        }
     }
 
     public static void main(String[] args) {
         LinkedList ll1 = new LinkedList();
         LinkedList ll2=new LinkedList();
 
-        ll1.addFirst(100);
-        ll1.addFirst(90);
-        ll1.addFirst(80);
-        ll1.addFirst(70);
-        ll1.addFirst(60);
+//        ll1.addFirst(100);
+//        ll1.addFirst(90);
+//        ll1.addFirst(80);
+//        ll1.addFirst(70);
+//        ll1.addFirst(60);
 
-        ll2.addFirst(50);
-        ll2.addFirst(40);
-        ll2.addFirst(30);
-        ll2.addFirst(20);
-        ll2.addFirst(10);
+        ll2.addFirst(55);
+        ll2.addFirst(70);
+        ll2.addFirst(310);
+        ll2.addFirst(2);
+        ll2.addFirst(90);
+
+       LinkedList ll= ll2.mergeSortLL(ll2.head, ll2.tail);
+        Node temp=ll.head;
+        while(temp!=null){
+            System.out.print(temp.data + " ");
+            temp=temp.next;
+        }
 
 
 //        System.out.println("size of linked list"+":"+ " " +ll.size());
@@ -294,12 +327,12 @@ public class Main {
 //        System.out.println(ll1.getMiddleElement());
 //
 
-        LinkedList res=ll1.mergeSortedLists(ll1,ll2);
-
-        Node temp=res.head;
-        while(temp!=null){
-            System.out.print(temp.data + " ");
-            temp=temp.next;
-        }
+//        LinkedList res=ll1.mergeSortedLists(ll1,ll2);
+//
+//        Node temp=res.head;
+//        while(temp!=null){
+//            System.out.print(temp.data + " ");
+//            temp=temp.next;
+//        }
     }
 }
