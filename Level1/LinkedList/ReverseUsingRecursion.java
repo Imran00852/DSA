@@ -9,15 +9,6 @@ public class ReverseUsingRecursion {
             this.data=data;
         }
     }
-    public static void printList(Node head) {
-        Node temp = head;
-        while (temp != null) {
-            System.out.print(temp.data + " ");
-            temp = temp.next;
-
-        }
-        System.out.println();
-    }
     public static void reverseRecursive(Node head){
         if(head==null){
             return;
