@@ -26,7 +26,7 @@ public class NextGreaterElementOnTheRight {
         return nge;
     }
     public static void main(String[] args) {
-        int arr[]={2,4,1,8,9,10,12,2};
+        int arr[]={5,2,1,4};
         int res[]=getNextGreaterElement(arr);
         for(int val:res){
             System.out.print(val+" ");
