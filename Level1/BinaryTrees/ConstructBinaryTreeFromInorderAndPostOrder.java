@@ -1,6 +1,6 @@
 package Level1.BinaryTrees;
 
-public class ConstructBinaryTreeFromInorderAndPreOrder {
+public class ConstructBinaryTreeFromInorderAndPostOrder {
     public static class Node {
         int data;
         Node left;
@@ -17,30 +17,29 @@ public class ConstructBinaryTreeFromInorderAndPreOrder {
         }
     }
 
-    public static Node buildTree(int[] preorder, int psi, int pei, int[] inorder, int isi, int iei) {
+    public static Node buildTree(int[] postorder, int psi, int pei, int[] inorder, int isi, int iei) {
         if (isi > iei) {
             return null;
         }
         int idx = isi;
-        while (inorder[idx] != preorder[psi]) {
+        while (inorder[idx] != postorder[pei]) {
             idx++;
         }
-
-        int clse = idx - isi;    //count left subtree elements
-        Node node = new Node(preorder[psi]);
-        node.left = buildTree(preorder, psi + 1, psi + clse, inorder, isi, idx - 1);
-        node.right = buildTree(preorder, psi + clse + 1, pei, inorder, idx + 1, iei);
+        int clse = idx - isi;
+        Node node = new Node(postorder[pei]);
+        node.left = buildTree(postorder, psi, psi + clse - 1, inorder, isi, idx - 1);
+        node.right = buildTree(postorder, psi + clse, pei - 1, inorder, idx + 1, iei);
 
         return node;
     }
 
-    public static void displayPreOrder(Node root) {
+    public static void displayPostOrder(Node root) {
         if (root == null) {
             return;
         }
+        displayPostOrder(root.left);
+        displayPostOrder(root.right);
         System.out.print(root.data + " ");
-        displayPreOrder(root.left);
-        displayPreOrder(root.right);
     }
 
     public static void displayInOrder(Node root) {
@@ -53,11 +52,11 @@ public class ConstructBinaryTreeFromInorderAndPreOrder {
     }
 
     public static void main(String[] args) {
-        int[] preorder = {0, 1, 3, 7, 8, 4, 9, 10, 2, 5, 11, 6};
+        int[] postorder = {7, 8, 3, 9, 10, 4, 1, 11, 5, 6, 2, 0};
         int[] inorder = {7, 3, 8, 1, 9, 4, 10, 0, 11, 5, 2, 6};
 
-        Node root = buildTree(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
-        displayPreOrder(root);
+        Node root = buildTree(postorder, 0, postorder.length - 1, inorder, 0, inorder.length - 1);
+        displayPostOrder(root);
         System.out.println();
         displayInOrder(root);
     }
