@@ -16,14 +16,13 @@ public class LongestConsecutiveSequence {
         int maxStartPoint = 0;
         int maxLength = 0;
         for (int val : arr) {
-            if (map.containsKey(val) == true) {
+            if (map.containsKey(val)) {
                 int tempLength = 1;
-                int tempStartPoint = val;
-                while (map.containsKey(tempStartPoint + tempLength)) {
+                while (map.containsKey(val + tempLength)) {
                     tempLength++;
                 }
                 if (tempLength > maxLength) {
-                    maxStartPoint = tempStartPoint;
+                    maxStartPoint = val;
                     maxLength = tempLength;
                 }
             }
