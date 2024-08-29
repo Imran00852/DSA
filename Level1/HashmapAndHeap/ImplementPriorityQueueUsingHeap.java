@@ -10,6 +10,18 @@ public class ImplementPriorityQueueUsingHeap {
             data = new ArrayList<>();
         }
 
+        //o(n) constructor
+        public PriorityQueue(int[] arr) {
+            data = new ArrayList<>();
+            for (int val : arr) {
+                data.add(val);
+            }
+
+            for (int i = data.size() - 2; i >= 0; i--) {
+                downheapify(i);
+            }
+        }
+
         public int size() {
             return data.size();
         }
