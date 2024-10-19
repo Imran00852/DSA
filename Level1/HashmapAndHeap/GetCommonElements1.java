@@ -16,7 +16,7 @@ public class GetCommonElements1 {
         }
         for (int val : arr2) {
             if (hm.containsKey(val)) {
-                System.out.println(val);
+                System.out.print(val + " ");
                 hm.remove(val);
             }
         }
