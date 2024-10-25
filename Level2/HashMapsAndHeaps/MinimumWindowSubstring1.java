@@ -49,7 +49,7 @@ public class MinimumWindowSubstring1 {
                 f2 = true;
             }
 
-            if (f1 == false && f2 == false) break;
+            if (!f1 && !f2) break;
         }
         return ans;
     }
