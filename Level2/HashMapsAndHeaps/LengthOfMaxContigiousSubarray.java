@@ -27,5 +27,6 @@ public class LengthOfMaxContigiousSubarray {
     public static void main(String[] args) {
         int[] arr = {9, 2, 7, 5, 6, 23, 24, 22, 23, 19, 17, 16, 18, 39, 0};
         System.out.println(getLengthOfMaxContSubarr(arr));
+
     }
 }
